@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class Art: BaseEntity
+    public class Art : BaseEntity
     {
         private Seller idSeller;
         private string picLink1;
@@ -48,11 +48,43 @@ namespace Model
         public Color? Color1 { get => color1; set => color1 = value; }
         public Color? Color2 { get => color2; set => color2 = value; }
         public Color? Color3 { get => color3; set => color3 = value; }
-        internal Material Material { get => material; set => material = value; }
+        public Material Material { get => material; set => material = value; }
 
         public override string ToString()
         {
-            return base.ToString() + "PIECE: " + pieceName + " By: " + idSeller.ArtistName + " - @" + idSeller.UserName + " -ABOUT- " + about +
+            if (pieceName == null)
+                pieceName = "";
+            if (idSeller == null)
+                idSeller = new Seller(); // assuming Seller is the class type
+            if (idSeller.ArtistName == null)
+                idSeller.ArtistName = "";
+            if (idSeller.UserName == null)
+                idSeller.UserName = "";
+            if (about == null)
+                about = "";
+            if (price == null)
+                price = "";
+            if (height == null)
+                height = "";
+            if (width == null)
+                width = "";
+            if (country == null)
+                country = new Country();
+            if (city == null)
+                city = "";
+            if (street == null)
+                street = "";
+            if (streetNumber == null)
+                streetNumber = "";
+            if (color1 == null)
+                color1 = new Color();
+            if (color2 == null)
+                color2 = new Color();
+            if (color3 == null)
+                color3 = new Color();
+            if (material == null)
+                material = new Material();
+            return "PIECE: " + pieceName + " By: " + idSeller.ArtistName.ToString() + " - @" + idSeller.UserName.ToString() + " -ABOUT- " + about +
                 " || " + price + "$ , Height: " + height + " X Width: " + width +
                 " Located: " + country + ", " + city + ", " + street + " " + streetNumber +
                 " || " + color1 + ", " + color2 + ", " + color3 + ", Material: " + material;

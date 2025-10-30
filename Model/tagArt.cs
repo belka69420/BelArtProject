@@ -13,7 +13,7 @@ namespace Model
 
         
         public string TagName { get => tagName; set => tagName = value; }
-        internal Art IdArt { get => idArt; set => idArt = value; }
+        public Art IdArt { get => idArt; set => idArt = value; }
 
         public override string ToString()
         {

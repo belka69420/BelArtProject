@@ -13,7 +13,7 @@ namespace Model
         public string CountryName { get => countryName; set => countryName = value; }
         public override string ToString()
         {
-            return base.ToString() + countryName;
+            return  countryName;
         }
     }
 }

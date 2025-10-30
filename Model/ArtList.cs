@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class ArtList
+    public class ArtList : List<Art>
     {
+        public ArtList() { }
+        public ArtList(IEnumerable<Art> list) : base(list) { }
+        public ArtList(IEnumerable<BaseEntity> list) : base(list.Cast<Art>().ToList()) { }
     }
 }

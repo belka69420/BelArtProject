@@ -26,7 +26,20 @@ namespace Model
 
         public override string ToString()
         {
-            return base.ToString() + artistName + "  About: " + about + " #" + sellerTag1 + " #" + sellerTag2 + " #" + sellerTag3;
+            if (about == null)
+                about = "";
+            if (backgroundPic == null)
+                backgroundPic = "";
+            if (artistName == null)
+                artistName = "";
+            if (sellerTag1 == null)
+                sellerTag1 = "";
+            if (sellerTag2 == null)
+                sellerTag2 = "";
+            if (sellerTag3 == null)
+                sellerTag3 = "";
+
+            return artistName + "  About: " + about + " #" + sellerTag1 + " #" + sellerTag2 + " #" + sellerTag3;
         }
     }
 }

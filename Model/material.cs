@@ -13,7 +13,7 @@ namespace Model
         public string MaterialName { get => materialName; set => materialName = value; }
         public override string ToString()
         {
-            return base.ToString() + materialName;
+            return  materialName;
         }
     }
 }

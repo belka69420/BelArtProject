@@ -15,7 +15,7 @@ namespace Model
         public string RgbCode { get => rgbCode; set => rgbCode = value; }
         public override string ToString()
         {
-            return base.ToString() + colorName +" - "+ rgbCode;
+            return  colorName +" - "+ rgbCode;
         }
     }
 }

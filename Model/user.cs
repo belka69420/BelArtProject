@@ -36,7 +36,21 @@ namespace Model
 
         public override string ToString()
         {
-            return base.ToString() +name+" - @"+userName+" ,PASSWORD: "+pass+ " Located: " + country + ", " + city + ", " + street + " " + streetNumber +
+            if (city == null)
+                city = "";
+            if (street == null)
+                street = "";
+            if (streetNumber == null)
+                streetNumber = "";
+            if (profilePic == null)
+                profilePic = "";
+            if (instaLink == null)
+                instaLink = "";
+            if (tiktokLink == null)
+                tiktokLink = "";
+            if (facebookLink == null)
+                facebookLink = "";
+            return name+" - @"+userName+" ,PASSWORD: "+pass+ " Located: " + country + ", " + city + ", " + street + " " + streetNumber +
                 " || Birth Day: " +birthDate+" || INSTAGRAM "+instaLink+" | TikTok "+tiktokLink+" | FaceBook "+facebookLink;
         }
     }

@@ -15,7 +15,15 @@ namespace Model
         public User IdFollowed { get => idFollowed; set => idFollowed = value; }
         public override string ToString()
         {
-            return base.ToString() +"@"+ idFollower.UserName+ " follows @"+idFollowed.UserName;
+            if (idFollower == null)
+                idFollower = new User();
+            if (idFollower.UserName == null)
+                idFollower.UserName = "";
+            if (idFollowed == null)
+                idFollowed = new User();
+            if (idFollowed.UserName == null)
+                idFollowed.UserName = "";
+            return "@"+ idFollower.UserName + " follows @"+ idFollowed.UserName;
         }
     }
 }

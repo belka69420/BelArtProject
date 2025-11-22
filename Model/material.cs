@@ -13,7 +13,14 @@ namespace Model
         public string MaterialName { get => materialName; set => materialName = value; }
         public override string ToString()
         {
-            return  materialName;
+            return materialName;
         }
+        //private string material;
+
+        //public string MaterialName { get => material; set => material = value; }
+        //public override string ToString()
+        //{
+        //    return material;
+        //}
     }
 }

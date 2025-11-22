@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,52 @@ namespace ViewModel
             return g;
         }
 
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Color c = entity as Color;
+            if (c != null)
+            {
+                string sqlStr = "DELETE FROM color where id=@pid";
 
+                command.CommandText = sqlStr;
 
+                command.Parameters.Add(new OleDbParameter("@pid", c.Id));
+                
+
+            }
+        }
+
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+           
+            Color c = entity as Color;
+            if (c != null)
+            {
+                string sqlStr = "Insert INTO color (ColorName, RgbCode) VALUES (@cName, @rCode)";
+
+                command.CommandText = sqlStr;
+              
+                command.Parameters.Add(new OleDbParameter("@cName", c.ColorName));
+                command.Parameters.Add(new OleDbParameter("@rCode", c.RgbCode));
+
+            }
+
+        }
+
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+
+            Color c = entity as Color;
+            if (c != null)
+            {
+                string sqlStr = $"UPDATE color  SET colorName=@cName, rgbCode=@rCode WHERE ID=@id";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@cName", c.ColorName));
+                command.Parameters.Add(new OleDbParameter("@rCode", c.RgbCode));
+
+                command.Parameters.Add(new OleDbParameter("@id", c.Id));
+            }
+        }
     }
 }

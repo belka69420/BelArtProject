@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,48 @@ namespace ViewModel
 
             Material g = list.Find(item => item.Id == id);
             return g;
+        }
+
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Material m = entity as Material;
+            if (m != null)
+            {
+                string sqlStr = "DELETE FROM material where id=@pid";
+
+                command.CommandText = sqlStr;
+
+                command.Parameters.Add(new OleDbParameter("@pid", m.Id));
+
+
+            }
+        }
+
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Material m = entity as Material;
+            if (m != null)
+            {
+                string sqlStr = $"Insert INTO material  (material) VALUES (@mName)";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@mName", m.MaterialName));
+
+            }
+        }
+        
+
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Material m = entity as Material;
+            if (m != null)
+            {
+                string sqlStr = $"UPDATE material  SET material=@mName WHERE ID=@id";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@mName", m.MaterialName));
+                command.Parameters.Add(new OleDbParameter("@id", m.Id));
+            }
         }
     }
 }
